@@ -25,6 +25,12 @@ public class SentimentController {
                 sentenceDto, SentimentDto.class)
                 .getBody();
     }
+
+    @GetMapping("/test")
+    public String testHealth() {
+        return "OK)";
+    }
+
 }
 
 

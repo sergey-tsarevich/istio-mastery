@@ -5,9 +5,10 @@ COPY . ./app/
 WORKDIR /app
 RUN dotnet publish -c Release -o out
 
-ENV DATABASE_DIR=./
+ENV DATABASE_DIR=.
 
 FROM microsoft/dotnet:2.1.5-aspnetcore-runtime-alpine AS runtime
 WORKDIR /app
 COPY --from=build /app/out ./
+COPY ./Database/Feedback.db ./Feedback.db
 ENTRYPOINT ["dotnet", "SA.Feedback.dll"]
